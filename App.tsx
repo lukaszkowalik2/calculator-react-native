@@ -1,22 +1,30 @@
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import { StatusBar, SafeAreaView, Text } from 'react-native';
-import styled from 'styled-components/native';
+import { useState } from 'react';
+import { StatusBar, SafeAreaView, Text, View } from 'react-native';
+import styled from 'styled-components';
+import { Display } from './components/display/Display';
+import { Keyboard } from './components/keyboard/Keyboard';
 
 export default function App() {
-  const Button = styled.Button`
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border-radius: 3px;
-  `;
+  const [firstNumber, setFirstNumber] = useState('');
+  const [secondNumber, setSecondNumber] = useState('');
+  const [operatorNumber, setOperatorNumber] = useState('');
+
   const SafeArea = styled(SafeAreaView)`
     flex: 1;
     ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
   `;
+  const Wrapper = styled(View)`
+    background-color: #010101;
+    flex: 1;
+  `;
   return (
     <>
       <SafeArea>
-        <Text>test</Text>
+        <Wrapper>
+          <Display firstNumber={firstNumber} secondNumber={secondNumber} operatorNumber={operatorNumber} />
+          <Keyboard firstNumber={firstNumber} setFirstNumber={setFirstNumber} secondNumber={secondNumber} setSecondNumber={setSecondNumber} operatorNumber={operatorNumber} setOperatorNumber={setOperatorNumber} />
+        </Wrapper>
       </SafeArea>
       <ExpoStatusBar style='auto' />
     </>
