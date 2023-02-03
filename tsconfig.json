@@ -1,0 +1,4 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "types": ["jest", "styled-components-react-native"]
+}
